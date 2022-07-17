@@ -6,7 +6,7 @@
 #    By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 15:41:31 by mialbert          #+#    #+#              #
-#    Updated: 2022/07/12 15:42:37 by mialbert         ###   ########.fr        #
+#    Updated: 2022/07/12 16:01:36 by mialbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ all: libft $(NAME)
 libft:
 	@echo "\n${BLUE}======== libft ========${NC}"
 	@$(MAKE) -C $(LIBFT)
+	@$(MAKE) -C $(LIBFT) bonus
 
 $(NAME): $(OBJS)
 	@echo "${PURPLE}======== Compiling ========${NC}"
