@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:43:34 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/12 19:35:49 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/19 01:19:22 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdint.h>
 # include <stdbool.h>
 # include <limits.h>
-# include "../libs/libft/srcs/libft.h"
+# include "../libs/libft/includes/libft.h"
 
 typedef struct s_num
 {
@@ -24,7 +24,8 @@ typedef struct s_num
 	int32_t	index;
 }	t_num;
 
-t_list	*init_stack_a(int32_t argc, char **argv)
+t_list	*init_stack_a(char **argv);
+void	display_error(char *error_msg);
 
 #endif
 
