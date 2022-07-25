@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:00 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/19 01:39:07 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:02:36 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,59 +16,81 @@
  * The node is initialised with atoll because if an integer is given beyond the
  * regular integer range, then you would get some kind of garbage value when 
  * smashed into just 4 bytes. 
+ * 11 to account of the case there is a + or - beforehand. 
  */
-static t_list	*init_node(char *argv)
+static int32_t	init_node(char *argv)
 {
 	size_t	i;
 	int64_t	nbr;
 
 	i = 0;
-	while (*argv == '0' || argv[0] == '-' || argv[0] == '+')
+	while (*argv == '0')
 		argv++;
+	if (argv[0] == '+' || argv[0] == '-')
+		i++;
 	while (argv[i])
 	{
 		if (!ft_isdigit(argv[i++]))
-			display_error("input contains something"
+			display_error("input contains something "
 				"different than digits");
 	}
-	if (i <= 10)
+	if (i <= 11)
 	{
 		nbr = ft_atoll(argv);
 		if (nbr <= INT_MAX && nbr >= INT_MIN)
-			return (ft_lstnew(&nbr));
+			return (nbr);
 	}
-	return (display_error("Input is too high or low"), NULL);
+	return (display_error("Input is too high or low"), false);
+}
+
+static bool	ft_lstcmp(t_llist *head, int32_t nbr)
+{
+	if (!head)
+		return (false);
+	while (head != NULL)
+	{
+		if (head->value == nbr)
+			return (false);
+		head = head->next;
+	}
+	return (true);
 }
 
 /**
  * Initialising the given main arguments in a linked list. 
- * Converting from string to integer and checking for duplicates. 
+ * Converting from string to integer and checking for duplicates.  df
  */
-t_list	*init_stack_a(char **argv)
+static void	init_stack_a(t_llist *head, char **argv)
 {
 	size_t	i;
-	t_list	*node;
-	t_list	*prev_node;
-	t_list	*head;
+	int32_t	nbr;
+	t_llist *lst;
 
-	i = 1;
-	head = init_node(*argv++);
-	prev_node = head;
+	i = 0;
+	argv++;
+	lst = head;
 	while (*argv != NULL)
 	{
-		node = init_node(*argv++);
-		prev_node->next = node;
-		prev_node = node;
+		nbr = init_node(*argv++);
+		printf("nbr: %d\n", nbr);
+		if (!ft_lstcmp(head, nbr))
+			display_error("Duplicates detected");
+		lst->value = nbr;
+		lst->next = lstnew(0);
+		lst = lst->next;
 	}
-	return (head);
 }
 
 int32_t	main(int32_t argc, char **argv)
 {
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_llist	*stack_a;
+	t_llist	*stack_b;
 
 	argc = 0;
-	stack_a = init_stack_a(argv);
-	stack_b = ft_lstnew(0);
+	stack_a = ft_calloc(1, sizeof(t_list));
+	init_stack_a(stack_a, argv);
+	// ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
+	stack_b = lstnew(0);
 }
+
+// 000005326 53535dfdf035 owisjfe 3845723942786558234766825466346363 ---35353 -366 +4363

@@ -6,12 +6,12 @@
 #    By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 15:41:31 by mialbert          #+#    #+#              #
-#    Updated: 2022/07/19 22:59:57 by mialbert         ###   ########.fr        #
+#    Updated: 2022/07/25 16:12:44 by mialbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= clang
-NAME	= pipex
+NAME	= push_swap
 CFLAGS	= -Wall -Werror -Wextra
 HEADER	= -I includes -I libs/libft/srcs
 LIBFT	= ./libs/libft/
@@ -19,7 +19,8 @@ DEBUG	= -fsanitize=address
 SRCS	=	./srcs/instructions.c \
 			./srcs/parsing.c \
 			./srcs/push_swap.c \
-			./srcs/utils.c
+			./srcs/utils.c \
+			./srcs/lst_functions.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -41,8 +42,8 @@ libft:
 	@$(MAKE) -C $(LIBFT)
 	@$(MAKE) -C $(LIBFT) bonus
 
+
 $(NAME): $(OBJS)
-	@echo "${PURPLE}======== Compiling ========${NC}"
 	@$(CC) $(BONUS) -g $(CFLAGS) $(HEADER) $(LIBFT)libft.a $(OBJS) $(DEBUG) -o $(NAME)
 
 clean:
