@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:00 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/25 17:02:36 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/25 23:58:43 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * The node is initialised with atoll because if an integer is given beyond the
- * regular integer range, then you would get some kind of garbage value when 
+ * regular integer range, then you would get some kind of garbage content when 
  * smashed into just 4 bytes. 
  * 11 to account of the case there is a + or - beforehand. 
  */
@@ -49,7 +49,7 @@ static bool	ft_lstcmp(t_llist *head, int32_t nbr)
 		return (false);
 	while (head != NULL)
 	{
-		if (head->value == nbr)
+		if (head->content == nbr)
 			return (false);
 		head = head->next;
 	}
@@ -58,13 +58,13 @@ static bool	ft_lstcmp(t_llist *head, int32_t nbr)
 
 /**
  * Initialising the given main arguments in a linked list. 
- * Converting from string to integer and checking for duplicates.  df
+ * Converting from string to integer and checking for duplicates.
  */
-static void	init_stack_a(t_llist *head, char **argv)
+void	init_stack_a(t_llist *head, char **argv)
 {
 	size_t	i;
 	int32_t	nbr;
-	t_llist *lst;
+	t_llist	*lst;
 
 	i = 0;
 	argv++;
@@ -72,25 +72,12 @@ static void	init_stack_a(t_llist *head, char **argv)
 	while (*argv != NULL)
 	{
 		nbr = init_node(*argv++);
-		printf("nbr: %d\n", nbr);
 		if (!ft_lstcmp(head, nbr))
 			display_error("Duplicates detected");
-		lst->value = nbr;
+		lst->content = nbr;
 		lst->next = lstnew(0);
 		lst = lst->next;
 	}
-}
-
-int32_t	main(int32_t argc, char **argv)
-{
-	t_llist	*stack_a;
-	t_llist	*stack_b;
-
-	argc = 0;
-	stack_a = ft_calloc(1, sizeof(t_list));
-	init_stack_a(stack_a, argv);
-	// ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
-	stack_b = lstnew(0);
 }
 
 // 000005326 53535dfdf035 owisjfe 3845723942786558234766825466346363 ---35353 -366 +4363
