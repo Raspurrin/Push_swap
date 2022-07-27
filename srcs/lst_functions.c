@@ -6,19 +6,12 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:49:32 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 02:50:45 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 03:59:02 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/**
- * @brief sets a certain element of a linked list to a certain number.
- * @param lst 
- * @param nbr 
- * @param elem 
- * @return t_llist* 
- */
 void	lstset(t_llist *lst, int32_t nbr)
 {
 	if (!lst)
@@ -29,18 +22,6 @@ void	lstset(t_llist *lst, int32_t nbr)
 		lst = lst->next;
 	}
 }
-
-// void	lstset(void *lst, int32_t nbr, int32_t size)
-// {
-// 	if (!lst)
-// 		return ;
-
-// 	while (lst != NULL)
-// 	{
-// 		((uint8_t *)lst)[size] = nbr;
-// 		lst = lst->next;
-// 	}
-// }
 
 t_llist	*lstnew(int32_t nbr)
 {

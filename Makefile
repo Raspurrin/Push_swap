@@ -6,7 +6,7 @@
 #    By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 15:41:31 by mialbert          #+#    #+#              #
-#    Updated: 2022/07/25 16:12:44 by mialbert         ###   ########.fr        #
+#    Updated: 2022/07/27 03:57:00 by mialbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LIBFT	= ./libs/libft/
 DEBUG	= -fsanitize=address
 SRCS	=	./srcs/instructions.c \
 			./srcs/parsing.c \
-			./srcs/push_swap.c \
+			./srcs/indexing.c \
 			./srcs/utils.c \
 			./srcs/lst_functions.c
 

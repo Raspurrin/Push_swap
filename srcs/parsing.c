@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:00 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 00:28:01 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 03:58:17 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int32_t	init_node(char *argv)
  * @return true if number is found in the list
  * @return false if the number is not found
  */
-bool	ft_lstcmp(t_llist *head, int32_t nbr)
+static bool	ft_lstcmp(t_llist *head, int32_t nbr)
 {
 	if (!head)
 		return (false);
@@ -68,7 +68,7 @@ bool	ft_lstcmp(t_llist *head, int32_t nbr)
  * Initialising the given main arguments in a linked list. 
  * Converting from string to integer and checking for duplicates.
  */
-void	init_stack_a(t_llist *head, char **argv)
+static void	init_stack_a(t_llist *head, char **argv)
 {
 	size_t	i;
 	int32_t	nbr;
@@ -83,9 +83,21 @@ void	init_stack_a(t_llist *head, char **argv)
 		if (!ft_lstcmp(head, nbr))
 			display_error("Duplicates detected");
 		lst->content = nbr;
-		lst->next = lstnew(-1);
+		if (*argv != NULL)
+			lst->next = lstnew(-1);
 		lst = lst->next;
 	}
 }
 
-// 000005326 53535dfdf035 owisjfe 3845723942786558234766825466346363 ---35353 -366 +4363
+int32_t	main(int32_t argc, char **argv)
+{
+	t_llist	*stack_a;
+	t_llist	*stack_b;
+
+	argc = 0;
+	stack_a = ft_calloc(1, sizeof(t_list));
+	stack_b = ft_calloc(1, sizeof(t_list));
+	init_stack_a(stack_a, argv);
+	indexing(stack_a);
+	return (EXIT_SUCCESS);
+}
