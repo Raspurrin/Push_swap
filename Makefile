@@ -6,7 +6,7 @@
 #    By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 15:41:31 by mialbert          #+#    #+#              #
-#    Updated: 2022/07/27 16:28:55 by mialbert         ###   ########.fr        #
+#    Updated: 2022/07/28 01:46:43 by mialbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS	=	./srcs/instructions/push.c \
 			./srcs/parsing.c \
 			./srcs/indexing.c \
 			./srcs/utils.c \
-			./srcs/lst_functions.c
+			./srcs/lst_functions.c \
+			./srcs/main.c
 
 OBJS	= $(SRCS:.c=.o)
 
