@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:03 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 03:57:27 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 15:29:00 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,3 @@ void	indexing(t_llist *head)
 		smol->index = index++;
 	}
 }
-
-

@@ -6,7 +6,7 @@
 #    By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 15:41:31 by mialbert          #+#    #+#              #
-#    Updated: 2022/07/27 03:57:00 by mialbert         ###   ########.fr        #
+#    Updated: 2022/07/27 16:28:55 by mialbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ CFLAGS	= -Wall -Werror -Wextra
 HEADER	= -I includes -I libs/libft/srcs
 LIBFT	= ./libs/libft/
 DEBUG	= -fsanitize=address
-SRCS	=	./srcs/instructions.c \
+SRCS	=	./srcs/instructions/push.c \
+			./srcs/instructions/reverse.c \
+			./srcs/instructions/rotate.c \
+			./srcs/instructions/swap.c \
 			./srcs/parsing.c \
 			./srcs/indexing.c \
 			./srcs/utils.c \

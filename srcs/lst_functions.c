@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:49:32 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 03:59:02 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/28 01:12:35 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_llist	*lstnew(int32_t nbr)
 	t_llist	*node;
 
 	node = malloc(sizeof(t_list));
-	node->index = nbr;
+	node->index = -1;
+	node->content = nbr;
 	node->next = NULL;
 	return (node);
 }

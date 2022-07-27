@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:00 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 03:58:17 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/28 01:33:38 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	init_stack_a(t_llist *head, char **argv)
 			display_error("Duplicates detected");
 		lst->content = nbr;
 		if (*argv != NULL)
-			lst->next = lstnew(-1);
+			lst->next = lstnew(0);
 		lst = lst->next;
 	}
 }
