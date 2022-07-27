@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:43:34 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 00:10:53 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 02:51:37 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init_stack_a(t_llist *head, char **argv);
 // Linked list functions:
 t_llist	*lstlast(t_llist *lst);
 t_llist	*lstnew(int32_t nbr);
-void	lstset(t_llist *lst, int32_t nbr, int32_t elem);
+void	lstset(t_llist *lst, int32_t nbr);
 
 
 #endif

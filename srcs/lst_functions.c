@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:49:32 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 01:37:29 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 02:50:45 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
  * @param elem 
  * @return t_llist* 
  */
-void	lstset(t_llist *lst, int32_t nbr, int32_t elem)
+void	lstset(t_llist *lst, int32_t nbr)
 {
 	if (!lst)
 		return ;
-	elem = 0;
 	while (lst != NULL)
 	{
 		lst->index = nbr;

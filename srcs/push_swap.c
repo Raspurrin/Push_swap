@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:03 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 02:27:01 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 02:55:16 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ void	get_indexed(t_llist *head)
 	int32_t	lst_size;
 
 	index = 0;
-	lst = head;
-	smol = head;
-	lstset(head, -1, lst->index);
+	lstset(head, -1);
 	lst_size = lstsize(head);
 	while (index < lst_size)
 	{
+		lst = head;
+		while (lst->next != NULL && lst->index >= 0)
+			lst = lst->next;
+		smol = lst;
+		lst = head;
 		while (lst->next != NULL)
 		{
 			if (lst->next->content < smol->content && lst->next->index < 0)
@@ -39,11 +42,6 @@ void	get_indexed(t_llist *head)
 			lst = lst->next;
 		}
 		smol->index = index++;
-		lst = head;
-		while (lst->next != NULL && lst->index >= 0)
-			lst = lst->next;
-		smol = lst;
-		lst = head;
 	}
 }
 
