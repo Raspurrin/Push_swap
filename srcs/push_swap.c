@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:03 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 02:19:19 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 02:27:01 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,16 @@ void	get_indexed(t_llist *head)
 	{
 		while (lst->next != NULL)
 		{
-				printf("lst->next->content: %d, smol->content %d lst->next->index %d\n", lst->next->content, smol->content, lst->next->index);
 			if (lst->next->content < smol->content && lst->next->index < 0)
-			{
 				smol = lst->next;
-			}
 			lst = lst->next;
 		}
-		printf("after loop smol->content: %d\n", smol->content);
-		smol->index = index;
-		printf("index: %d\n", index);
-		printf("smol->index: %d\n", smol->index);
+		smol->index = index++;
 		lst = head;
 		while (lst->next != NULL && lst->index >= 0)
 			lst = lst->next;
 		smol = lst;
 		lst = head;
-		index++;
-		printf("index: %d\n", index);
 	}
 }
 
@@ -64,7 +56,7 @@ int32_t	main(int32_t argc, char **argv)
 	stack_a = ft_calloc(1, sizeof(t_list));
 	stack_b = ft_calloc(1, sizeof(t_list));
 	init_stack_a(stack_a, argv);
-	ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
+	// ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
 	get_indexed(stack_a);
 	return (EXIT_SUCCESS);
 }
