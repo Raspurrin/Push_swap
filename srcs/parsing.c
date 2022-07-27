@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:00 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/25 23:58:43 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 00:28:01 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,15 @@ static int32_t	init_node(char *argv)
 	return (display_error("Input is too high or low"), false);
 }
 
-static bool	ft_lstcmp(t_llist *head, int32_t nbr)
+/**
+ * Compares the content of all the nodes in the list with a given number
+ * and returns false if the number is found in the list. 
+ * @param head The address of the first node in the list
+ * @param nbr The number to be compared
+ * @return true if number is found in the list
+ * @return false if the number is not found
+ */
+bool	ft_lstcmp(t_llist *head, int32_t nbr)
 {
 	if (!head)
 		return (false);
@@ -75,7 +83,7 @@ void	init_stack_a(t_llist *head, char **argv)
 		if (!ft_lstcmp(head, nbr))
 			display_error("Duplicates detected");
 		lst->content = nbr;
-		lst->next = lstnew(0);
+		lst->next = lstnew(-1);
 		lst = lst->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:43:34 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/25 23:58:03 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 00:10:53 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ typedef struct s_llist
 void	display_error(char *error_msg);
 void	lstadd_back(t_llist **lst, t_llist *new);
 void	init_stack_a(t_llist *head, char **argv);
-int		lstsize(t_llist *lst);
+
+// Linked list functions:
 t_llist	*lstlast(t_llist *lst);
 t_llist	*lstnew(int32_t nbr);
+void	lstset(t_llist *lst, int32_t nbr, int32_t elem);
+
 
 #endif

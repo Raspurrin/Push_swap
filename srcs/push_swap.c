@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:03 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/26 01:06:04 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/27 02:19:19 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,36 +22,36 @@ void	get_indexed(t_llist *head)
 {
 	t_llist	*lst;
 	int32_t	index;
-	int32_t	smallest;
+	t_llist	*smol;
 	int32_t	lst_size;
 
 	index = 0;
 	lst = head;
+	smol = head;
+	lstset(head, -1, lst->index);
 	lst_size = lstsize(head);
-	smallest = lst->content;
-	while (lst->next != NULL)
-	{
-		printf("lst->content: %d lst->next->content %d\n", lst->content, lst->next->content);
-		if (lst->content < smallest)
-			smallest = lst->content;
-		lst = lst->next;
-	}
 	while (index < lst_size)
 	{
-		lst = head;
-		printf("smallest: %d\n", smallest);
 		while (lst->next != NULL)
 		{
-			// printf("test lst->content: %d\n", lst->content);
-			if (lst->content < lst->next->content && lst->content > smallest)
+				printf("lst->next->content: %d, smol->content %d lst->next->index %d\n", lst->next->content, smol->content, lst->next->index);
+			if (lst->next->content < smol->content && lst->next->index < 0)
 			{
-				smallest = lst->content;
-				lst->index = index;
-				printf("lst->index: %d, lst->content: %d\n", lst->index, lst->content);
+				smol = lst->next;
 			}
 			lst = lst->next;
 		}
+		printf("after loop smol->content: %d\n", smol->content);
+		smol->index = index;
+		printf("index: %d\n", index);
+		printf("smol->index: %d\n", smol->index);
+		lst = head;
+		while (lst->next != NULL && lst->index >= 0)
+			lst = lst->next;
+		smol = lst;
+		lst = head;
 		index++;
+		printf("index: %d\n", index);
 	}
 }
 
