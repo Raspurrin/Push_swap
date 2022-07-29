@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:52:42 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/29 02:08:16 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/29 16:42:23 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ bool	check_sorting(t_llist *stack_a)
 {
 	while (stack_a->next != NULL)
 	{
-		ft_printf_fd(STDOUT_FILENO, "index: %d\n", stack_a->index);
+		// ft_printf_fd(STDOUT_FILENO, "index: %d\n", stack_a->index);
 		if (stack_a->next->index - stack_a->index != 1)
 		{
-			ft_printf_fd(STDOUT_FILENO, "0 ");
+			// ft_printf_fd(STDOUT_FILENO, "0 ");
 			return (false);
 		}
-		ft_printf_fd(STDOUT_FILENO, "1 ");
+		// ft_printf_fd(STDOUT_FILENO, "1 ");
 		stack_a = stack_a->next;
-		ft_printf_fd(STDOUT_FILENO, "2 ");
+		// ft_printf_fd(STDOUT_FILENO, "2 ");
 	}
-	ft_printf_fd(STDOUT_FILENO, "3 ");
+	// ft_printf_fd(STDOUT_FILENO, "3 ");
 	return (true);
 }
 
@@ -44,13 +44,36 @@ void	push_to_b(t_llist *stack_a, t_llist *stack_b, size_t i)
 {
 	while (stack_a != NULL)
 	{
-		// ft_printf_fd(STDOUT_FILENO, "bbbb ");
+		ft_printf_fd(STDOUT_FILENO, "bit: %d\ti: %d\tstack->content: %d\tstack_a->index: %d\n", (stack_a->index >> i) & 1, i, stack_a->content, stack_a->index);
 		if (((stack_a->index >> i) & 1) == 0)
 			pb(&stack_a, &stack_b);
 		else
 			ra(&stack_a, true);
-		stack_a->next = stack_a;
+		stack_a = stack_a->next;
 	}
+}
+
+
+//0000000000 000000000 0000000 1010111
+//000000000 000000000 0000000 00000001
+//------------------------------------
+//									 0
+
+void	radix(t_llist *stack_a, t_llist *stack_b)
+{
+	size_t	i;
+
+	i = 0;
+	// ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
+	while (!(check_sorting(stack_a)))
+	{
+		// ft_printf_fd(STDOUT_FILENO, "aaa ");
+		push_to_b(stack_a, stack_b, i++);
+		// ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
+		back_to_a(stack_a, stack_b);
+		// ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
+	}
+	// ft_printf_fd(STDOUT_FILENO, "oi ");
 }
 
 /** 
@@ -60,28 +83,6 @@ void	push_to_b(t_llist *stack_a, t_llist *stack_b, size_t i)
  * -----
  * 1 0001 0000
  */
-
-void	radix(t_llist *stack_a, t_llist *stack_b)
-{
-	size_t	i;
-
-	i = 31;
-	ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
-	while (!(check_sorting(stack_a)))
-	{
-		ft_printf_fd(STDOUT_FILENO, "yo ");
-		while (i >= 0)
-		{
-			ft_printf_fd(STDOUT_FILENO, "aaa ");
-			push_to_b(stack_a, stack_b, i--);
-			ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
-			back_to_a(stack_a, stack_b);
-			ft_lstprint_fd(stack_a, 'd', STDOUT_FILENO);
-		}
-		i = 31;
-	}
-	ft_printf_fd(STDOUT_FILENO, "oi ");
-}
 
 /**
  * I will check what the highest index is that I will be sorting, 
