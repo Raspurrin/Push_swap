@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:03 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/27 15:29:00 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/07/29 02:00:57 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,9 @@ void	indexing(t_llist *head)
 		}
 		smol->index = index++;
 	}
+	// while (head != NULL)
+	// {
+	// 	ft_printf_fd(STDOUT_FILENO, "index: %d\n", head->index);
+	// 	head = head->next;
+	// }
 }

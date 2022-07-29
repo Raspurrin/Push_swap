@@ -6,7 +6,7 @@
 #    By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 15:41:31 by mialbert          #+#    #+#              #
-#    Updated: 2022/07/28 01:46:43 by mialbert         ###   ########.fr        #
+#    Updated: 2022/07/29 01:21:08 by mialbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,21 +24,24 @@ SRCS	=	./srcs/instructions/push.c \
 			./srcs/indexing.c \
 			./srcs/utils.c \
 			./srcs/lst_functions.c \
-			./srcs/main.c
+			./srcs/main.c \
+			./srcs/radix.c
 
 OBJS	= $(SRCS:.c=.o)
 
 NC		:= \033[0m
-RED 	:= \033[1;31m
+B_RED	:= \033[1;31m
+RED 	:= \033[0;31m
 B_GREEN	:= \033[1;32m
 GREEN 	:= \033[0;32m
+B_BLUE 	:= \033[1;34m
 BLUE 	:= \033[0;34m
 PURPLE	:= \033[0;35m
 
 all: libft $(NAME)
 
 %.o : %.c 
-	@echo "$(B_GREEN)Compiling: $(GREEN)$(notdir $<) 🔨$(NC)"
+	@echo "$(B_BLUE)Compiling: $(BLUE)$(notdir $<) 🔨$(NC)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 libft:
@@ -46,20 +49,23 @@ libft:
 	@$(MAKE) -C $(LIBFT)
 	@$(MAKE) -C $(LIBFT) bonus
 
+banner:
+	@echo "\n${PURPLE}======== push_swap ========${NC}"
+	@say Its red ix baby
 
-$(NAME): $(OBJS)
+$(NAME): banner $(OBJS)
 	@$(CC) $(BONUS) -g $(CFLAGS) $(HEADER) $(LIBFT)libft.a $(OBJS) $(DEBUG) -o $(NAME)
+	@say lets fucking go
 
 clean:
 	@rm -f $(OBJS)
-	@echo "${RED} Removed ${NC} $(OBJS)"
-	@$(MAKE) -C $(LIBFT) clean
+	@echo "${B_RED}🧹 Cleaning: ${RED} push_swap object files $(NC)"
+	@$(MAKE) -C $(LIBFT) fclean
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "${RED} Removed ${NC} $(NAME)"
-	@$(MAKE) -C $(LIBFT) fclean
+	@echo "${B_RED}🧹 Cleaning: ${RED} $(NAME)$(NC)"
 
 re: fclean all
 
-.PHONY: all, libft, clean, fclean
+.PHONY: all, libft, clean, fclean push_swap
