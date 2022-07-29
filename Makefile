@@ -6,7 +6,7 @@
 #    By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 15:41:31 by mialbert          #+#    #+#              #
-#    Updated: 2022/07/29 01:21:08 by mialbert         ###   ########.fr        #
+#    Updated: 2022/07/29 20:02:00 by mialbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,20 @@ B_BLUE 	:= \033[1;34m
 BLUE 	:= \033[0;34m
 PURPLE	:= \033[0;35m
 
-all: libft $(NAME)
+SUBM_STATE := $(shell find libs/libft -type f)
+
+# to automatically initialize the submodules
+ifeq ($(SUBM_STATE),)
+SUBM_FLAG	= submodule
+else 
+SUBM_FLAG	= 
+endif
+
+all: $(SUBM_FLAG) libft banner $(NAME)
+
+submodule: 
+	@git submodule init 
+	@git submodule update
 
 %.o : %.c 
 	@echo "$(B_BLUE)Compiling: $(BLUE)$(notdir $<) 🔨$(NC)"
@@ -51,11 +64,11 @@ libft:
 
 banner:
 	@echo "\n${PURPLE}======== push_swap ========${NC}"
-	@say Its red ix baby
+#	@say Its red ix baby
 
 $(NAME): banner $(OBJS)
-	@$(CC) $(BONUS) -g $(CFLAGS) $(HEADER) $(LIBFT)libft.a $(OBJS) $(DEBUG) -o $(NAME)
-	@say lets fucking go
+	@$(CC) $(OBJS) -g $(CFLAGS) $(HEADER) $(LIBFT)libft.a $(DEBUG) -o $(NAME)
+#	@say lets fucking go
 
 clean:
 	@rm -f $(OBJS)
@@ -68,4 +81,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, libft, clean, fclean push_swap
+.PHONY: all, libft, clean, fclean push_swap, submodule, print
