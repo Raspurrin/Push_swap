@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:00 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/02 21:18:57 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/03 00:19:58 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static int32_t	init_node(char *argv)
 static bool	ft_lstcmp(t_llist *head, int32_t nbr)
 {
 	if (!head)
-		return (false);
-	while (head != NULL)
+		return (true);
+	while (head->next != NULL)
 	{
 		if (head->content == nbr)
 			return (false);
@@ -82,9 +82,9 @@ void	init_stack_a(t_llist *head, char **argv)
 	while (*argv != NULL)
 	{
 		nbr = init_node(*argv++);
+		lst->content = nbr;
 		if (!ft_lstcmp(head, nbr))
 			display_error("Duplicates detected");
-		lst->content = nbr;
 		if (*argv != NULL)
 			lst->next = lstnew(0);
 		lst = lst->next;

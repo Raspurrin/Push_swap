@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:52:42 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/02 20:59:44 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/03 01:46:22 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	radix(t_llist **stack_a, t_llist **stack_b, size_t lst_size)
 	{
 		while (i < lst_size)
 		{
-			if ((((*stack_a)->index >> j++) & 1) == 0)
+			if ((((*stack_a)->index >> j) & 1) == 0)
 				pb(stack_a, stack_b);
 			else
 				ra(stack_a, true);
@@ -43,5 +43,6 @@ void	radix(t_llist **stack_a, t_llist **stack_b, size_t lst_size)
 		while (*stack_b != NULL)
 			pa(stack_a, stack_b);
 		i = 0;
+		j++;
 	}
 }

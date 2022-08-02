@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:46:53 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/02 03:09:39 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/03 01:32:37 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	pb(t_llist **stack_a, t_llist **stack_b)
 {
 	t_llist	*tmp;
 
-	if (!(*stack_a)->content)
+	if (!*stack_a)
 		return ;
 	tmp = *stack_a;
 	*stack_a = (*stack_a)->next;
