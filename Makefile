@@ -6,13 +6,13 @@
 #    By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 15:41:31 by mialbert          #+#    #+#              #
-#    Updated: 2022/07/29 20:02:00 by mialbert         ###   ########.fr        #
+#    Updated: 2022/08/02 03:07:19 by mialbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= clang
 NAME	= push_swap
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g
 HEADER	= -I includes -I libs/libft/srcs
 LIBFT	= ./libs/libft/
 DEBUG	= -fsanitize=address
@@ -64,11 +64,11 @@ libft:
 
 banner:
 	@echo "\n${PURPLE}======== push_swap ========${NC}"
-#	@say Its red ix baby
+	@say Its red ix baby
 
 $(NAME): banner $(OBJS)
 	@$(CC) $(OBJS) -g $(CFLAGS) $(HEADER) $(LIBFT)libft.a $(DEBUG) -o $(NAME)
-#	@say lets fucking go
+	@say lets fucking go
 
 clean:
 	@rm -f $(OBJS)

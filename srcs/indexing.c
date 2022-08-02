@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:03 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/29 02:00:57 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/01 23:58:49 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
  * increase the index and check what the next smallest number is, while
  * being bigger than the previous smallest. 
  */
-void	indexing(t_llist *head)
+size_t	indexing(t_llist *head)
 {
-	int32_t	index;
-	int32_t	lst_size;
+	size_t	index;
+	size_t	lst_size;
 	t_llist	*lst;
 	t_llist	*smol;
 
@@ -43,9 +43,5 @@ void	indexing(t_llist *head)
 		}
 		smol->index = index++;
 	}
-	// while (head != NULL)
-	// {
-	// 	ft_printf_fd(STDOUT_FILENO, "index: %d\n", head->index);
-	// 	head = head->next;
-	// }
+	return (lst_size);
 }

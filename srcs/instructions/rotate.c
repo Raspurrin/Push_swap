@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 15:33:55 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/28 01:33:06 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/02 01:34:58 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	ra(t_llist **stack_a, bool print)
 	t_llist	*tmp;
 	t_llist	*lst;
 
+	if ((*stack_a)->next == NULL)
+		return ((void)write(STDOUT_FILENO, "ra\n", 3));
 	tmp = *stack_a;
 	lst = *stack_a;
 	*stack_a = (*stack_a)->next;
-	ft_lstprint_fd(*stack_a, 'd', STDOUT_FILENO);
 	while (lst->next != NULL)
 		lst = lst->next;
 	lst->next = tmp;
