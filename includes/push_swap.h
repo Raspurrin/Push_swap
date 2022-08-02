@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:43:34 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/02 02:52:53 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/02 21:12:11 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ typedef struct s_llist
 	struct s_llist	*next;
 }	t_llist;
 
-size_t	indexing(t_llist *head);
+void	indexing(t_llist *head, size_t lst_size);
 void	display_error(char *error_msg);
 void	init_stack_a(t_llist *head, char **argv);
 void	radix(t_llist **stack_a, t_llist **stack_b, size_t lst_size);
+bool	check_sorting(t_llist *stack_a);
+void	case_3(t_llist **stack_a);
+void	case_5(t_llist **stack_a, t_llist **stack_b);
 
 // Linked list functions:
 t_llist	*lstlast(t_llist *lst);

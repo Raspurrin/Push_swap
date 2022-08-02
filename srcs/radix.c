@@ -6,13 +6,13 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:52:42 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/02 03:26:49 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/02 20:59:44 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static bool	check_sorting(t_llist *stack_a)
+bool	check_sorting(t_llist *stack_a)
 {
 	while (stack_a->next != NULL)
 	{
@@ -32,17 +32,16 @@ void	radix(t_llist **stack_a, t_llist **stack_b, size_t lst_size)
 	j = 0;
 	while (!(check_sorting(*stack_a)))
 	{
-		while (j < lst_size)
+		while (i < lst_size)
 		{
-			if ((((*stack_a)->index >> i) & 1) == 0)
+			if ((((*stack_a)->index >> j++) & 1) == 0)
 				pb(stack_a, stack_b);
 			else
 				ra(stack_a, true);
-			j++;
+			i++;
 		}
 		while (*stack_b != NULL)
 			pa(stack_a, stack_b);
-		j = 0;
-		i++;
+		i = 0;
 	}
 }

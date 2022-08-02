@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:00 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/29 02:23:24 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/02 21:18:57 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int32_t	init_node(char *argv)
 	i = 0;
 	while (*argv == '0')
 		argv++;
+	if (!*argv)
+		return (0);
 	if (argv[0] == '+' || argv[0] == '-')
 		i++;
 	while (argv[i])
@@ -70,9 +72,9 @@ static bool	ft_lstcmp(t_llist *head, int32_t nbr)
  */
 void	init_stack_a(t_llist *head, char **argv)
 {
-	size_t	i;
-	int32_t	nbr;
-	t_llist	*lst;
+	size_t			i;
+	int32_t			nbr;
+	t_llist			*lst;
 
 	i = 0;
 	argv++;

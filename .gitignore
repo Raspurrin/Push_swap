@@ -36,6 +36,8 @@
 *.x86_64
 *.hex
 *.a
+anna/*
+anna
 
 # Debug files
 *.dSYM/
