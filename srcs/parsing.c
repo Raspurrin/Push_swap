@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:00 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/03 00:19:58 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/03 03:39:26 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * smashed into just 4 bytes. 
  * 11 to account of the case there is a + or - beforehand. 
  */
-static int32_t	init_node(char *argv)
+static int32_t	check_error(char *argv, t_llist *stack_a)
 {
 	size_t	i;
 	int64_t	nbr;
@@ -34,7 +34,7 @@ static int32_t	init_node(char *argv)
 	{
 		if (!ft_isdigit(argv[i++]))
 			display_error("input contains something "
-				"different than digits");
+				"different than digits", stack_a);
 	}
 	if (i <= 11)
 	{
@@ -42,7 +42,7 @@ static int32_t	init_node(char *argv)
 		if (nbr <= INT_MAX && nbr >= INT_MIN)
 			return (nbr);
 	}
-	return (display_error("Input is too high or low"), false);
+	return (display_error("Input is too high or low", stack_a), false);
 }
 
 /**
@@ -81,12 +81,13 @@ void	init_stack_a(t_llist *head, char **argv)
 	lst = head;
 	while (*argv != NULL)
 	{
-		nbr = init_node(*argv++);
+		nbr = check_error(*argv++, head);
 		lst->content = nbr;
 		if (!ft_lstcmp(head, nbr))
-			display_error("Duplicates detected");
+			display_error("Duplicates detected", head);
 		if (*argv != NULL)
 			lst->next = lstnew(0);
 		lst = lst->next;
 	}
 }
+// \(*_*)/d

@@ -6,7 +6,7 @@
 #    By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/12 15:41:31 by mialbert          #+#    #+#              #
-#    Updated: 2022/08/02 20:48:35 by mialbert         ###   ########.fr        #
+#    Updated: 2022/08/03 03:04:24 by mialbert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	= push_swap
 CFLAGS	= -Wall -Werror -Wextra -g
 HEADER	= -I includes -I libs/libft/srcs
 LIBFT	= ./libs/libft/
-DEBUG	= -fsanitize=address
+# DEBUG	= -fsanitize=address
 SRCS	=	./srcs/instructions/push.c \
 			./srcs/instructions/reverse.c \
 			./srcs/instructions/rotate.c \

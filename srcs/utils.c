@@ -6,14 +6,16 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 12:51:13 by mialbert          #+#    #+#             */
-/*   Updated: 2022/07/19 01:23:14 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/03 03:45:23 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	display_error(char *error_msg)
+void	display_error(char *error_msg, t_llist *stack_a)
 {
+	lstclear(&stack_a);
 	ft_printf_fd(STDERR_FILENO, "%s\n", error_msg);
-	exit(0);
+	exit(EXIT_FAILURE);
 }
+

@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:43:24 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/02 21:01:51 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/03 02:52:53 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,15 @@
  */
 void	case_3(t_llist **stack_a)
 {
-	if ((((*stack_a)->content > (*stack_a)->next->content) && \
-	(((*stack_a)->content < (*stack_a)->next->next->content) || \
-	((*stack_a)->next->content < (*stack_a)->next->next->content))) || \
-	((*stack_a)->content < (*stack_a)->next->content && \
-	(*stack_a)->next->next->content))
+	if (((((*stack_a)->content > (*stack_a)->next->content) && ((*stack_a)->content < (*stack_a)->next->next->content)) 
+	||	(((*stack_a)->content > (*stack_a)->next->content) && ((*stack_a)->next->content > (*stack_a)->next->next->content))) 
+	||	(((*stack_a)->content < (*stack_a)->next->content && (*stack_a)->content < (*stack_a)->next->next->content)))
 		sa(stack_a, true);
 	if (check_sorting(*stack_a))
 		return ;
-	if ((*stack_a)->content < (*stack_a)->next->content)
-		ra(stack_a, true);
 	if ((*stack_a)->content > (*stack_a)->next->content)
+		ra(stack_a, true);
+	else if ((*stack_a)->content < (*stack_a)->next->content)
 		rra(stack_a, true);
 }
 

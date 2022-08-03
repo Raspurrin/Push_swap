@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 16:52:42 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/03 01:46:22 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/03 03:00:08 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	check_sorting(t_llist *stack_a)
 {
 	while (stack_a->next != NULL)
 	{
-		if (stack_a->next->index - stack_a->index != 1)
+		if (stack_a->next->content < stack_a->content)
 			return (false);
 		stack_a = stack_a->next;
 	}
