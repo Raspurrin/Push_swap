@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 01:45:49 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/03 03:48:36 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/03 03:54:57 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int32_t	main(int32_t argc, char **argv)
 	size_t	lst_size;
 
 	argc = 0;
-	stack_a = ft_calloc(1, sizeof(t_list));
+	stack_a = ft_calloc(1, sizeof(t_llist));
 	stack_b = NULL;
 	init_stack_a(stack_a, argv);
 	lst_size = lstsize(stack_a);
