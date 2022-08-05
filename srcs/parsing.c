@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:47:00 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/03 03:39:26 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/05 02:02:24 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static bool	ft_lstcmp(t_llist *head, int32_t nbr)
  * Initialising the given main arguments in a linked list. 
  * Converting from string to integer and checking for duplicates.
  */
-void	init_stack_a(t_llist *head, char **argv)
+void	init_stack_a(t_llist **head, char **argv)
 {
 	size_t			i;
 	int32_t			nbr;
@@ -78,13 +78,13 @@ void	init_stack_a(t_llist *head, char **argv)
 
 	i = 0;
 	argv++;
-	lst = head;
+	lst = *head;
 	while (*argv != NULL)
 	{
-		nbr = check_error(*argv++, head);
+		nbr = check_error(*argv++, *head);
 		lst->content = nbr;
-		if (!ft_lstcmp(head, nbr))
-			display_error("Duplicates detected", head);
+		if (!ft_lstcmp(*head, nbr))
+			display_error("Duplicates detected", *head);
 		if (*argv != NULL)
 			lst->next = lstnew(0);
 		lst = lst->next;

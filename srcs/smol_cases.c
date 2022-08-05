@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 03:43:24 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/03 02:52:53 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/05 02:18:40 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@
  */
 void	case_3(t_llist **stack_a)
 {
-	if (((((*stack_a)->content > (*stack_a)->next->content) && ((*stack_a)->content < (*stack_a)->next->next->content)) 
-	||	(((*stack_a)->content > (*stack_a)->next->content) && ((*stack_a)->next->content > (*stack_a)->next->next->content))) 
-	||	(((*stack_a)->content < (*stack_a)->next->content && (*stack_a)->content < (*stack_a)->next->next->content)))
+	if (check_sorting(*stack_a))
+		return ;
+	if (((((*stack_a)->content > (*stack_a)->next->content) && \
+	((*stack_a)->content < (*stack_a)->next->next->content)) \
+	|| (((*stack_a)->content > (*stack_a)->next->content) && \
+	((*stack_a)->next->content > (*stack_a)->next->next->content))) \
+	|| (((*stack_a)->content < (*stack_a)->next->content && \
+	(*stack_a)->content < (*stack_a)->next->next->content)))
 		sa(stack_a, true);
 	if (check_sorting(*stack_a))
 		return ;
@@ -37,18 +42,48 @@ void	case_3(t_llist **stack_a)
 		rra(stack_a, true);
 }
 
+static size_t	find_pos(t_llist *stack_a, size_t index)
+{
+	size_t	pos;
+
+	pos = 0;
+	while (stack_a->index != (int32_t)index)
+	{
+		pos++;
+		stack_a = stack_a->next;
+	}
+	return (pos);
+}
+
 /**
  * First I push two numbers to stack b, so I can use the same instructions
  * as case_3 to order the 3 numbers in stack_a. After this sorting the
  * remainding two numbers is ez. 
  */
-void	case_5(t_llist **stack_a, t_llist **stack_b)
+void	case_5(t_llist **stack_a, t_llist **stack_b, size_t lst_size)
 {
-	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
+	int32_t	i;
+	size_t	pos;
+
+	i = 0;
+	while (lst_size - i != 3)
+	{
+		pos = find_pos(*stack_a, i);
+		while ((*stack_a)->index != i)
+		{
+			if (pos < 3)
+				ra(stack_a, true);
+			else
+				rra(stack_a, true);
+		}
+		pb(stack_a, stack_b);
+		i++;
+	}
 	case_3(stack_a);
-	pa(stack_a, stack_b);
-	if ((*stack_a)->content > (*stack_a)->next->content)
-		ra(stack_a, true);
-	pa (stack_a, stack_b);
+	i = 0;
+	while (lst_size - i != 3)
+	{
+		pa(stack_a, stack_b);
+		i++;
+	}
 }

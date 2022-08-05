@@ -6,7 +6,7 @@
 /*   By: mialbert <mialbert@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:49:32 by mialbert          #+#    #+#             */
-/*   Updated: 2022/08/03 03:45:03 by mialbert         ###   ########.fr       */
+/*   Updated: 2022/08/05 02:25:56 by mialbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	lstclear(t_llist **lst)
 	}
 	tmp = NULL;
 }
-
 
 t_llist	*lstnew(int32_t nbr)
 {
